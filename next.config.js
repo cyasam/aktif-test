@@ -5,17 +5,13 @@ const nextConfig = {
   i18n: {
     // These are all the locales you want to support in
     // your application
-    locales: ['en-US', 'tr-TR'],
+    locales: ['en', 'tr'],
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
-    defaultLocale: 'en-US',    
+    defaultLocale: 'en',
   },
   async rewrites() {
     return [
-      {
-        source: '/about',
-        destination: '/en/about',
-      },
       {
         source: '/hakkimda',
         destination: '/tr/about',

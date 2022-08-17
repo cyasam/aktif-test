@@ -1,6 +1,7 @@
+import React from 'react';
 import fsPromises from 'fs/promises';
 import path from 'path';
-import Header from '../components/Header';
+import Header from '../components/Header'
 
 export async function getServerSideProps() {
   const filePath = path.join(process.cwd(), './data/nav.json');
@@ -12,13 +13,15 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ navData }) {
+function about({navData}) {
   return (
     <div>
       <Header navData={navData} />
       <div>
-        Home
+        About
       </div>
     </div>
-  );
+  )
 }
+
+export default about
