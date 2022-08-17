@@ -1,17 +1,19 @@
-import { getAllPageData } from "../utils";
 
-export async function getServerSideProps(context) {
-  const { navData, pageData } = await getAllPageData("home", context.locale)
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { getAllNavData } from '../utils';
+
+export async function getServerSideProps({locale}) {
+  const { navData } = await getAllNavData(locale)
 
   return {
-    props: { navData, pageData, locale: context.locale },
+    props: { ...(await serverSideTranslations(locale,["pages/home"])), navData, locale },
   };
 }
 
-export default function Home({pageData}) {
+export default function Home() {
+  const { t } = useTranslation('pages/home');
   return (
-    <div>
-      {pageData.title}
-    </div>
+    <h1>{t('title')}</h1>
   );
 }

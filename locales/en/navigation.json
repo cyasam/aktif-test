@@ -1,12 +1,14 @@
 {
-  "/":{
-    "id": 1,
-    "name": "Home",
-    "path": "/"
-  },
-  "/about":{
-    "id": 2,
-    "name": "About",
-    "path": "/about"
+  "items": {
+    "/":{
+      "id": 1,
+      "name": "Home",
+      "path": "/"
+    },
+    "/about":{
+      "id": 2,
+      "name": "About",
+      "path": "/about"
+    }
   }
 }

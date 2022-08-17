@@ -11,7 +11,7 @@ function Header({navData}) {
 
     const {default:localeNavData} = await import(`../locales/${value}/navigation.json`);
 
-    router.push(router.route, localeNavData[router.pathname].path, {
+    router.push(router.route, localeNavData.items[router.pathname].path, {
       locale: value,
     });
   };
@@ -21,7 +21,7 @@ function Header({navData}) {
   return (
     <header style={{width: "300px",display: "flex", justifyContent: "space-between",alignItems:"center"}}>
       <ul>
-        {Object.values(navData).map((nav) => (
+        {Object.values(navData.items).map((nav) => (
           <li key={nav.id}>
             <Link href={nav.path} locale={locale}>
               <a style={{"color": "#f00"}}>{nav.name}</a>

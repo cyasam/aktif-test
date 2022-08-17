@@ -1,12 +1,14 @@
 {
-  "/":{
-    "id": 1,
-    "name": "Anasayfa",
-    "path": "/"
-  },
-  "/about":{
-    "id": 2,
-    "name": "Hakkımda",
-    "path": "/hakkimda"
+  "items": {
+    "/":{
+      "id": 1,
+      "name": "Anasayfa",
+      "path": "/"
+    },
+    "/about":{
+      "id": 2,
+      "name": "Hakkımda",
+      "path": "/hakkimda"
+    }
   }
 }
