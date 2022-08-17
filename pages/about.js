@@ -1,30 +1,23 @@
 import React from 'react';
-import fsPromises from 'fs/promises';
-import path from 'path';
 import { useRouter } from 'next/router'
-import Header from '../components/Header'
+import { getAllPageData } from '../utils';
 
-export async function getServerSideProps({ locale, locales }) {
-  const filePath = path.join(process.cwd(),'data/nav.json');
-  const jsonData = await fsPromises.readFile(filePath);
-  const navData = JSON.parse(jsonData);
+export async function getServerSideProps(context) {
+  const { navData, pageData } = await getAllPageData(context)
 
   return {
-    props: { navData,locale, locales },
+    props: { navData, pageData, locale: context.locale },
   };
 }
 
-function About({navData,...props}) {
+function About({pageData,locale}) {
   const router = useRouter()
   const { defaultLocale } = router
   return (
     <div>
-      <Header navData={navData} />
-      <div>
-        <h1>About</h1>
-        <p>Current locale: {props.locale}</p>
-        <p>Default locale: {defaultLocale}</p>
-      </div>
+      <h1>{pageData.title}</h1>
+      <p>Current locale: {locale}</p>
+      <p>Default locale: {defaultLocale}</p>
     </div>
   )
 }

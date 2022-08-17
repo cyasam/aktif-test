@@ -1,24 +1,17 @@
-import fsPromises from 'fs/promises';
-import path from 'path';
-import Header from '../components/Header';
+import { getAllPageData } from "../utils";
 
-export async function getServerSideProps() {
-  const filePath = path.join(process.cwd(),'data/nav.json');
-  const jsonData = await fsPromises.readFile(filePath);
-  const navData = JSON.parse(jsonData);
+export async function getServerSideProps(context) {
+  const { navData, pageData } = await getAllPageData(context)
 
   return {
-    props: { navData },
+    props: { navData, pageData, locale: context.locale },
   };
 }
 
-export default function Home({ navData }) {
+export default function Home({pageData}) {
   return (
     <div>
-      <Header navData={navData} />
-      <div>
-        Home
-      </div>
+      {pageData.title}
     </div>
   );
 }

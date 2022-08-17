@@ -1,17 +1,12 @@
-[
-  {
+{
+  "/":{
     "id": 1,
-    "name": "home",
+    "name": "Anasayfa",
     "path": "/"
   },
-  {
+  "/about":{
     "id": 2,
-    "name": "about",
-    "path": "/about"
-  },
-  {
-    "id": 3,
     "name": "Hakkımda",
     "path": "/hakkimda"
   }
-]
+}
