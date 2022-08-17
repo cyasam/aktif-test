@@ -1,7 +1,7 @@
 import { getAllPageData } from "../utils";
 
 export async function getServerSideProps(context) {
-  const { navData, pageData } = await getAllPageData(context)
+  const { navData, pageData } = await getAllPageData("home", context.locale)
 
   return {
     props: { navData, pageData, locale: context.locale },

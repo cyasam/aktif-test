@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { getAllPageData } from '../utils';
 
 export async function getServerSideProps(context) {
-  const { navData, pageData } = await getAllPageData(context)
+  const { navData, pageData } = await getAllPageData("about", context.locale)
 
   return {
     props: { navData, pageData, locale: context.locale },
