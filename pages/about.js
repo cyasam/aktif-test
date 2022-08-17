@@ -14,7 +14,7 @@ export async function getServerSideProps({ locale, locales }) {
   };
 }
 
-function about({navData,...props}) {
+function About({navData,...props}) {
   const router = useRouter()
   const { defaultLocale } = router
   return (
@@ -29,4 +29,4 @@ function about({navData,...props}) {
   )
 }
 
-export default about
+export default About

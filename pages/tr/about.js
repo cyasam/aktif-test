@@ -1,8 +1,8 @@
 import React from 'react'
 import fsPromises from 'fs/promises';
 import path from 'path';
-import { useRouter } from 'next/router'
 import Header from '../../components/Header'
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps({ locale, locales }) {
   const filePath = path.join(process.cwd(),'data/nav.json');
@@ -14,8 +14,7 @@ export async function getServerSideProps({ locale, locales }) {
   };
 }
 
-function about({navData,...props}) {
-  console.log(props)
+function About({navData,...props}) {
   const router = useRouter()
   const { defaultLocale } = router
   return (
@@ -30,4 +29,4 @@ function about({navData,...props}) {
   )
 }
 
-export default about
+export default About
