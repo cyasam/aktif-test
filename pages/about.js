@@ -4,7 +4,8 @@ import path from 'path';
 import Header from '../components/Header'
 
 export async function getServerSideProps() {
-  const filePath = path.join('./public/data/nav.json');
+  const filePath = path.join(process.cwd(),'data/nav.json');
+  console.log(path.join(process.cwd(),'data/nav.json'))
   const jsonData = await fsPromises.readFile(filePath);
   const navData = JSON.parse(jsonData);
 
