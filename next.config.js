@@ -9,12 +9,13 @@ const nextConfig = {
     // This is the default locale you want to be used when visiting
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: 'en',
+    localeDetection: false,
   },
   async rewrites() {
     return [
       {
         source: '/hakkimda',
-        destination: '/tr/about',
+        destination: '/tr/about'
       },
     ]
   },
