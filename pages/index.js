@@ -1,15 +1,12 @@
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { getAllNavData } from '../utils';
+import { getAllServerSideData } from '../utils';
 
 export async function getServerSideProps({ locale }) {
-  const { navData } = await getAllNavData(locale);
+  const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['pages/home'])),
-      navData,
-      locale,
+      ...data,
     },
   };
 }
