@@ -13,6 +13,11 @@ const nextConfig = {
         destination: '/tr/about',
         locale: false,
       },
+      { 
+        source: '/tr/iletisim',
+        destination: '/tr/contact',
+        locale: false,
+      },
     ]
   },
 }

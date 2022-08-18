@@ -1,30 +1,40 @@
-import React from 'react'
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-function Header({navData}) {
+function Header({ navData }) {
   const router = useRouter();
-  const {locale} = router
+  const { locale } = router;
 
   const handleLocaleChange = async (event) => {
     const value = event.target.value;
 
-    const {default:localeNavData} = await import(`../locales/${value}/navigation.json`);
+    const { default: localeNavData } = await import(
+      `../locales/${value}/navigation.json`
+    );
+    console.log(localeNavData);
 
     router.push(router.route, localeNavData.items[router.pathname].path, {
       locale: value,
     });
   };
 
-  if(!navData) return null;
+  if (!navData) return null;
 
   return (
-    <header style={{width: "300px",display: "flex", justifyContent: "space-between",alignItems:"center"}}>
+    <header
+      style={{
+        width: '300px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
       <ul>
         {Object.values(navData.items).map((nav) => (
           <li key={nav.id}>
             <Link href={nav.path} locale={locale}>
-              <a style={{"color": "#f00"}}>{nav.name}</a>
+              <a style={{ color: '#f00' }}>{nav.name}</a>
             </Link>
           </li>
         ))}
@@ -36,7 +46,7 @@ function Header({navData}) {
         </select>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

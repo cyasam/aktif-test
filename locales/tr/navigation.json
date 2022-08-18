@@ -1,14 +1,19 @@
 {
   "items": {
-    "/":{
+    "/": {
       "id": 1,
       "name": "Anasayfa",
       "path": "/"
     },
-    "/about":{
+    "/about": {
       "id": 2,
       "name": "Hakkımda",
       "path": "/hakkimda"
+    },
+    "/contact": {
+      "id": 3,
+      "name": "İletişim",
+      "path": "/iletisim"
     }
   }
 }

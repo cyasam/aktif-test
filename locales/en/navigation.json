@@ -1,14 +1,19 @@
 {
   "items": {
-    "/":{
+    "/": {
       "id": 1,
       "name": "Home",
       "path": "/"
     },
-    "/about":{
+    "/about": {
       "id": 2,
       "name": "About",
       "path": "/about"
+    },
+    "/contact": {
+      "id": 3,
+      "name": "Contact",
+      "path": "/contact"
     }
   }
 }
