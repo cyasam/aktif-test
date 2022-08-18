@@ -12,7 +12,6 @@ function Header({ navData }) {
     const { default: localeNavData } = await import(
       `../locales/${value}/navigation.json`
     );
-    console.log(localeNavData);
 
     router.push(router.route, localeNavData.items[router.pathname].path, {
       locale: value,
