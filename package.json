@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "createImage": "docker build . -t aktif-test-image",
+    "runContainer": "docker run -p 3001:3000 --name aktif-test-container aktif-test-image",
+    "killContainer": "docker rm -f aktif-test-container",
+    "openImage": "docker run -it --name aktif-test-container aktif-test-image sh"
   },
   "dependencies": {
     "next": "12.2.5",
