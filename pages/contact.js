@@ -1,7 +1,9 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { useTranslation } from 'next-i18next';
-import ContactTr from '../containers/pages/ContactTr';
 import { getAllServerSideData } from '../utils';
+
+const ContactTr = dynamic(() => import('../containers/pages/ContactTr'));
 
 export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({
