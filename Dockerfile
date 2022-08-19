@@ -14,7 +14,7 @@ RUN npm run build
 FROM node:${VARIANT} as runner
 WORKDIR /aktif-test
 ENV NODE_ENV production
-# If you are using a custom next.config.js file, uncomment this line.
+
 COPY --from=builder /aktif-test/next.config.js ./
 COPY --from=builder /aktif-test/next-i18next.config.js ./
 COPY --from=builder /aktif-test/locales ./locales
