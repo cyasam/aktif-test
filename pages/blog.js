@@ -9,7 +9,7 @@ const allLocales = { en, tr }
 export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
 
-  const { data: blogs } = await axios.get(`http://host.docker.internal:1337/api/blogs?locale=${locale}`)
+  const { data: blogs } = await axios.get(`${process.env.STRAPI_API}/api/blogs?locale=${locale}`)
 
   return {
     props: {
