@@ -1,4 +1,4 @@
-If you want to start dev environment, you need to install [https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack](Remote Development Extension) in VS Code, and open folder in container.
+If you want to start dev environment, you need to install [https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack] (Remote Development Extension) in VS Code, and open folder in container.
 
 ## Getting Started
 
