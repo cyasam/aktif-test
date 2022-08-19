@@ -14,6 +14,11 @@
       "id": 3,
       "name": "İletişim",
       "path": "/iletisim"
+    },
+    "/blog": {
+      "id": 4,
+      "name": "Blog",
+      "path": "/blog"
     }
   }
 }

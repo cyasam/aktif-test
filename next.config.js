@@ -8,12 +8,12 @@ const nextConfig = {
   i18n,
   async rewrites() {
     return [
-      { 
+      {
         source: '/tr/hakkimda',
         destination: '/tr/about',
         locale: false,
       },
-      { 
+      {
         source: '/tr/iletisim',
         destination: '/tr/contact',
         locale: false,
