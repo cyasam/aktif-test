@@ -10,11 +10,6 @@
       "name": "About",
       "path": "/about"
     },
-    "/contact": {
-      "id": 3,
-      "name": "Contact",
-      "path": "/contact"
-    },
     "/blog": {
       "id": 4,
       "name": "Blog",

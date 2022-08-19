@@ -13,7 +13,11 @@ function Header({ navData }) {
       `../locales/${value}/navigation.json`
     );
 
-    router.push(router.route, localeNavData.items[router.pathname].path, {
+    if (!localeNavData.items[router.pathname]) {
+      return router.push(value, value, { locale: value })
+    }
+
+    router.push(router.pathname, localeNavData.items[router.pathname].path, {
       locale: value,
     });
   };
