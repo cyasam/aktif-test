@@ -9,15 +9,27 @@ const allLocales = { en, tr }
 export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
 
-  const { data: blogs } = await axios.get(`${process.env.STRAPI_API}/api/blogs?locale=${locale}`)
+  try {
 
-  return {
-    props: {
-      ...data,
-      locale,
-      blogs
-    },
-  };
+    const { data: blogs } = await axios.get(`${process.env.STRAPI_API}/api/blogs?locale=${locale}`)
+
+    return {
+      props: {
+        ...data,
+        locale,
+        blogs
+      },
+    };
+  } catch (err) {
+    console.log(err)
+    return {
+      props: {
+        locale,
+        data,
+        blogs: null,
+      }
+    };
+  }
 }
 
 const formatPublishedAt = (date, locale) => {
@@ -31,7 +43,7 @@ function blog({ blogs, locale }) {
   return (
     <div>
       <ul>
-        {blogs.data.map(post => <li key={post.id}>{post.attributes.title} - {formatPublishedAt(post.attributes.publishedAt, locale)}</li>)}
+        {blogs?.data.map(post => <li key={post.id}>{post.attributes.title} - {formatPublishedAt(post.attributes.publishedAt, locale)}</li>)}
       </ul>
     </div>
   )
