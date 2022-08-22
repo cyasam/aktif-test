@@ -1,35 +1,22 @@
 import React from 'react'
-import axios from 'axios';
 import { format, utcToZonedTime } from 'date-fns-tz'
 import { en, tr } from "date-fns/locale"
 import { getAllServerSideData } from '../utils';
+import { getBlogs } from '../api/getBlogs';
 
 const allLocales = { en, tr }
 
 export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
+  const blogs = await getBlogs(locale)
 
-  try {
-
-    const { data: blogs } = await axios.get(`${process.env.STRAPI_API}/api/blogs?locale=${locale}`)
-
-    return {
-      props: {
-        ...data,
-        locale,
-        blogs
-      },
-    };
-  } catch (err) {
-    console.log(err)
-    return {
-      props: {
-        locale,
-        data,
-        blogs: null,
-      }
-    };
-  }
+  return {
+    props: {
+      ...data,
+      locale,
+      blogs
+    },
+  };
 }
 
 const formatPublishedAt = (date, locale) => {
@@ -39,11 +26,14 @@ const formatPublishedAt = (date, locale) => {
 }
 
 function blog({ blogs, locale }) {
+  if (blogs.error) {
+    return <p>{blogs.error}</p>
+  }
 
   return (
     <div>
       <ul>
-        {blogs?.data.map(post => <li key={post.id}>{post.attributes.title} - {formatPublishedAt(post.attributes.publishedAt, locale)}</li>)}
+        {blogs?.result?.data?.map(post => <li key={post.id}>{post.attributes.title} - {formatPublishedAt(post.attributes.publishedAt, locale)}</li>)}
       </ul>
     </div>
   )
