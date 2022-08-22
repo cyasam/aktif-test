@@ -10,7 +10,7 @@
     "createImage": "docker build . -t aktif-test-image",
     "runContainer": "docker run -p 3001:3000 --name aktif-test-container aktif-test-image",
     "killContainer": "docker rm -f aktif-test-container",
-    "openImage": "docker run -it --name aktif-test-container aktif-test-image sh"
+    "openImage": "docker exec -it aktif-test-container bash"
   },
   "dependencies": {
     "axios": "^0.27.2",
