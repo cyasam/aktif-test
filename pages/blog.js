@@ -2,13 +2,13 @@ import React from 'react'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import { en, tr } from "date-fns/locale"
 import { getAllServerSideData } from '../utils';
-import { getBlogs } from '../api/getBlogs';
+import { getBlogsGraphQl } from '../api/getBlogs';
 
 const allLocales = { en, tr }
 
 export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
-  const blogs = await getBlogs(locale)
+  const blogs = await getBlogsGraphQl(locale)
 
   return {
     props: {
