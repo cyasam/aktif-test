@@ -5,8 +5,6 @@ import { client } from '../client';
 import Header from '../components/Header';
 import '../styles/globals.css';
 
-
-
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>

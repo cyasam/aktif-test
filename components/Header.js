@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { getNavigationGraphQl } from '../api/getNavigation';
 
 function Header({ navData }) {
   const router = useRouter();
@@ -8,21 +9,24 @@ function Header({ navData }) {
 
   const handleLocaleChange = async (event) => {
     const value = event.target.value;
+    const { result: navData } = await getNavigationGraphQl(value)
 
-    const { default: localeNavData } = await import(
-      `../locales/${value}/navigation.json`
-    );
+    const navItem = navData.find(item => item.path === router.pathname)
 
-    if (!localeNavData.items[router.pathname]) {
-      return router.push(value, value, { locale: value })
+    if (navItem) {
+      return router.push(router.pathname, navItem.path, {
+        locale: value,
+      });
     }
 
-    router.push(router.pathname, localeNavData.items[router.pathname].path, {
-      locale: value,
-    });
+    router.push(value, value, { locale: value })
   };
 
   if (!navData) return null;
+
+  if (navData.error) {
+    return <p>{navData.error}</p>
+  }
 
   return (
     <header
@@ -34,16 +38,16 @@ function Header({ navData }) {
       }}
     >
       <ul>
-        {Object.values(navData.items).map((nav) => (
+        {navData?.result?.map((nav) => (
           <li key={nav.id}>
             <Link href={nav.path} locale={locale}>
-              <a style={{ color: '#f00' }}>{nav.name}</a>
+              <a style={{ color: '#f00' }}>{nav.title}</a>
             </Link>
           </li>
         ))}
       </ul>
       <div>
-        <select onChange={handleLocaleChange} value={router.locale}>
+        <select onChange={handleLocaleChange} value={locale}>
           <option value="en">English</option>
           <option value="tr">Türkçe</option>
         </select>
