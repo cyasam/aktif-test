@@ -5,7 +5,7 @@ import { getAllServerSideData } from '../utils';
 
 const ContactTr = dynamic(() => import('../containers/pages/ContactTr'));
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const data = await getAllServerSideData({
     locale,
     pageKey: ['pages/contact'],

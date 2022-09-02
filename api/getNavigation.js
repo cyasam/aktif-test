@@ -13,7 +13,8 @@ query GetNavigations($slug: String!, $locale: I18NLocaleCode) {
 export const getNavigationGraphQl = async (locale) => {
   try {
     const { data: { renderNavigation: result } } = await client.query({
-      query: GET_NAVIGATION, variables: {
+      query: GET_NAVIGATION,
+      variables: {
         slug: "navigation",
         locale
       }

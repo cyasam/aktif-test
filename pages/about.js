@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { getAllServerSideData } from '../utils';
 
-export async function getServerSideProps({ locale }) {
+export async function getStaticProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/about'] });
 
   return {
