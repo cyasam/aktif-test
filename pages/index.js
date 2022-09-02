@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { getAllServerSideData } from '../utils';
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
 
   return {

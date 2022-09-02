@@ -6,7 +6,7 @@ import { getBlogsGraphQl } from '../api/getBlogs';
 
 const allLocales = { en, tr }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   const data = await getAllServerSideData({ locale, pageKey: ['pages/home'] });
   const blogs = await getBlogsGraphQl(locale)
 
