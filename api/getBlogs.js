@@ -40,7 +40,7 @@ export const getBlogsGraphQl = async (locale) => {
 
 export const getBlogs = async (locale) => {
   try {
-    const { data: result } = await axios.get(`${process.env.STRAPI_API}/api/blogs?locale=${locale}`)
+    const { data: result } = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API}/api/blogs?locale=${locale}`)
 
     return { result, error: null }
   } catch (err) {

@@ -7,10 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "createImage": "docker build . -t aktif-test-image",
-    "runContainer": "docker run -p 3001:3000 --name aktif-test-container aktif-test-image",
-    "killContainer": "docker rm -f aktif-test-container",
-    "openImage": "docker exec -it aktif-test-container bash"
+    "createImage": "docker build . -t cyasam/aktif-test",
+    "runContainer": "docker run -p 3001:3000 --name aktif-test cyasam/aktif-test",
+    "killContainer": "docker rm -f aktif-test",
+    "openContainer": "docker exec -it aktif-test bash"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
