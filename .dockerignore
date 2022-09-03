@@ -1,3 +1,4 @@
 .git/
 .devcontainer/
 node_modules/
+.env*.local

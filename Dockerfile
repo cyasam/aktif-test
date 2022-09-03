@@ -7,6 +7,8 @@ RUN npm install
 
 FROM node:${VARIANT} as builder
 WORKDIR /aktif-test
+ENV NODE_ENV production
+
 COPY . .
 COPY --from=dependencies /aktif-test/node_modules ./node_modules
 RUN npm run build
